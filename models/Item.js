@@ -14,6 +14,8 @@ class Item {
 
   static async update(id, price) {
     await db.execute('UPDATE Items SET price = ? WHERE id = ?', [price, id]);
+    const [updatedRows] = await db.execute('SELECT * FROM Items WHERE id = ?', [id]);
+    return updatedRows[0];
   }
 }
 

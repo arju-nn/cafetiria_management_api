@@ -15,8 +15,8 @@ class ItemController {
   static async updateItem(req, res) {
     const { id } = req.params;
     const { price } = req.body;
-    await Item.update(id, price);
-    res.send({ message: 'Item updated successfully' });
+    const item = await Item.update(id, price);
+    res.send(item);
   }
 }
 
